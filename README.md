@@ -35,7 +35,7 @@ and modules folder. If need be, these could be added later on.
 
 An example invocation looks as follows:
 ```shell
-docker run -p 9200:9200 -p 9300:9300 -e ELASTIC_PASSWORD=yoloswag -v es-data:/usr/share/elasticsearch/data -v es-config:/usr/share/elasticsearch/config gb3-es:latest
+docker run -p 9200:9200 -p 9300:9300 -e ELASTIC_PASSWORD=mysecurepassword -v es-data:/usr/share/elasticsearch/data -v es-config:/usr/share/elasticsearch/config gb3-es:latest
 ```
 
 You can then access http://localhost:9200/cluster/health?wait_for_status=yellow&timeout=50s and check the cluster
