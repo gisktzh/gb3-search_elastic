@@ -1,5 +1,12 @@
 #Visual Studio files
 .vs
 
+# FME Files
+FME/*.log
+FME/*.ffs
+
 #Environments
 .env
+
+# Intellij
+.idea

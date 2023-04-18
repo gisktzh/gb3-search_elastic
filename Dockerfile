@@ -2,8 +2,10 @@ FROM docker.elastic.co/elasticsearch/elasticsearch:8.6.2
 
 ENV discovery.type single-node
 
-VOLUME ["/data"]
-WORKDIR /data
+VOLUME ["/usr/share/elasticsearch/data"]
+VOLUME ["/usr/share/elasticsearch/config"]
+EXPOSE 9200
+EXPOSE 9300
 
 RUN echo "xpack.security.enabled: false" >> /usr/share/elasticsearch/config/elasticsearch.yml
 
