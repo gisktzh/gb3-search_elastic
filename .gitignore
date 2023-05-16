@@ -4,6 +4,7 @@
 # FME Files
 FME/*.log
 FME/*.ffs
+FME/*.recover
 
 #Environments
 .env
