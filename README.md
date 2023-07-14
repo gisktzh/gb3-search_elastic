@@ -36,7 +36,7 @@ and modules folder. If need be, these could be added later on.
 An example invocation looks as follows:
 
 ```shell
-docker run -p 9200:9200 -p 9300:9300 -e ELASTIC_PASSWORD=mysecurepassword -v es-data:/usr/share/elasticsearch/data -v es-config:/usr/share/elasticsearch/config gb3-es:latest
+docker run -p 9200:9200 -p 9300:9300 -e ELASTIC_PASSWORD=mysecurepassword -v es-data:/usr/share/elasticsearch/data -v es-config:/usr/share/elasticsearch/config -v elasticsearch-logs:/usr/share/elasticsearch/logs gb3-es:latest
 ```
 
 You can then access http://localhost:9200/cluster/health?wait_for_status=yellow&timeout=50s and check the cluster
@@ -48,6 +48,6 @@ status.
 1. Create an Image of the Docker container using ```docker build -t gb3-elasticsearch .```
 2. Set the password for elasticsearch as an environment variable (ELASTIC_PASSWORD) on the target system (and on the
    target system for the Search API)
-2. Run the image locally with ```docker run -d -p 9200:9200 -p 9300:9300 -v elasticsearch-data:/usr/share/elasticsearch/logs --name gb3-elasticsearch gb3-elasticsearch``` (
+2. Run the image locally with ```docker run -d -p 9200:9200 -p 9300:9300 -v elasticsearch-logs:/usr/share/elasticsearch/logs --name gb3-elasticsearch gb3-elasticsearch``` (
    or deploy elsewhere with target port 9200)
 3. The URL elasticsearch is listening to needs to be set as an environment variable for the Search API (ELASTIC_URL)
