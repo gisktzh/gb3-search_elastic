@@ -6,7 +6,7 @@ SearchAPI.
 ## Elasticsearch Deployment
 
 Elasticsearch is deployable with a Docker image. It currently exposes ports *9200* and *9300*, and takes two mounted
-volumes - one for the data, and one for the configs.
+volumes - one for the data, one for the configs, and one for logs.
 
 ### Build
 
@@ -29,6 +29,7 @@ Port mappings for `9200` and `9300` should be added, and the volumes to be mount
 
 * `/usr/share/elasticsearch/data`: The data folder where indices are stored
 * `/usr/share/elasticsearch/config`: The config folder where configurations such as the keystore are stored
+* `/usr/share/elasticsearch/logs`: The logs folder where elasticsearch logs are stored 
 
 Note that we do not just mount the whole `elasticsearch` folder because that would also back up things such as the JRE
 and modules folder. If need be, these could be added later on.
