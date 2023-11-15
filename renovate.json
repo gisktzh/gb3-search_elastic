@@ -1,8 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "local>Renovate_Bot/renovate-presets"
-  ],
+  "extends": ["config:recommended", "mergeConfidence:all-badges", ":automergeDisabled"],
   "assignees": ["lukas.merz@ebp.ch", "konstantin.arbogast@ebp.ch"],
   "reviewers": ["lukas.merz@ebp.ch", "konstantin.arbogast@ebp.ch"]
 }
