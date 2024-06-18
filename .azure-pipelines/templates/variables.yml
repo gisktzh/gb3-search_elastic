@@ -1,0 +1,14 @@
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: 'gb3connection'
+  imageRepository: 'gb3-elasticsearch'
+  containerRegistry: '***REMOVED***'
+  dockerfilePath: '**/Dockerfile'
+  tag: 'latest'
+  containerApp: 'gb3-elasticsearch'
+  resourceGroup: '***REMOVED***'
+  azureSubscription: '***REMOVED***'
+  azureResourceManagerServiceConnection: '***REMOVED***'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
