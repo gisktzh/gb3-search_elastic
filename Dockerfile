@@ -1,4 +1,4 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+FROM docker.elastic.co/elasticsearch/elasticsearch:8.16.0
 
 ENV discovery.type single-node
 
