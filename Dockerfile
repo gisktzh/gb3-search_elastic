@@ -1,6 +1,6 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:8.15.1
+FROM docker.elastic.co/elasticsearch/elasticsearch:8.16.0
 
-ENV discovery.type single-node
+ENV discovery.type=single-node
 
 VOLUME ["/usr/share/elasticsearch/data"]
 VOLUME ["/usr/share/elasticsearch/config"]
