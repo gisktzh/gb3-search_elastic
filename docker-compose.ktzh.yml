@@ -1,0 +1,34 @@
+services:
+  gb3-search-elastic:
+    restart: always
+    ports:
+      - 9200:9200
+    environment:
+      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+      - TZ=Europe/Zurich
+    build:
+      context: ./
+      args:
+        - http_proxy=http://igw-axzh.abxsec.com:8080
+        - https_proxy=http://igw-axzh.abxsec.com:8080
+    image: gitlab.ktzh.ch:5050/gis/gb3-search_elastic/gb3-es:latest
+    container_name: gb3-search-elastic
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+      - es-config:/usr/share/elasticsearch/config
+      - es-logs:/usr/share/elasticsearch/logs
+    logging:
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+volumes:
+  es-data:
+    external: true
+    name: es-data
+  es-config:
+    external: true
+    name: es-config
+  es-logs:
+    external: true
+    name: es-logs

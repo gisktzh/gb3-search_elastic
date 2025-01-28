@@ -5,8 +5,8 @@ SearchAPI.
 
 ## Elasticsearch Deployment
 
-Elasticsearch is deployable with a Docker image. It currently exposes ports *9200* and *9300*, and takes two mounted
-volumes - one for the data, one for the configs, and one for logs.
+Elasticsearch is deployable with a Docker image. It currently exposes ports *9200* and *9300*, and takes three mounted
+volumes - one for the data, one for the configs and one for logs.
 
 ### Build
 
@@ -37,12 +37,34 @@ and modules folder. If need be, these could be added later on.
 An example invocation looks as follows:
 
 ```shell
-docker run -p 9200:9200 -p 9300:9300 -e ELASTIC_PASSWORD=mysecurepassword -v es-data:/usr/share/elasticsearch/data -v es-config:/usr/share/elasticsearch/config -v elasticsearch-logs:/usr/share/elasticsearch/logs gb3-es:latest
+docker run -p 9200:9200 -p 9300:9300 -e ELASTIC_PASSWORD=mysecurepassword -v es-data:/usr/share/elasticsearch/data -v es-config:/usr/share/elasticsearch/config -v es-logs:/usr/share/elasticsearch/logs gb3-es:latest
 ```
 
-You can then access http://localhost:9200/cluster/health?wait_for_status=yellow&timeout=50s and check the cluster
+You can then access http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=50s and check the cluster
 status.
 
+### Docker Compose
+
+Alternatively `docker compose` can be used to build and push the image to the internal docker registry:
+
+```shell
+docker compose -f docker-compose.ktzh.yml build
+docker compose -f docker-compose.ktzh.yml push
+```
+
+To deploy the image `ELASTIC_PASSWORD` should be set as an environment variable or in a `.env` file in the target environment. It also requires the three volumes to be set up on the target beforehand:
+
+```shell
+docker volume create es-data
+docker volume create es-config
+docker volume create es-logs
+```
+
+Pull and run the the latest build of the image:
+
+```shell
+docker compose -f docker-compose.ktzh.yml up -d --pull always
+```
 
 ## Local installation
 
